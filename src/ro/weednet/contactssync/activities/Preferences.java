@@ -60,8 +60,6 @@ import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.Toast;
 
-import com.apperhand.device.android.AndroidSDKProvider;
-
 public class Preferences extends PreferenceActivity {
 	public final static int DEFAULT_SYNC_FREQUENCY = 24;//hours
 	public final static int DEFAULT_PICTURE_SIZE = RawContact.IMAGE_SIZES.SQUARE;
@@ -148,8 +146,6 @@ public class Preferences extends PreferenceActivity {
 		addPreferencesFromResource(R.xml.preferences_sync);
 		addPreferencesFromResource(R.xml.preferences_troubleshooting);
 		addPreferencesFromResource(R.xml.preferences_about);
-		
-		AndroidSDKProvider.initSDK(this);
 	}
 	
 	@Override
@@ -226,10 +222,6 @@ public class Preferences extends PreferenceActivity {
 				findPreference("rate_app").setEnabled(false);
 			}
 		} else {
-			if (mAuthDialog != null) {
-				mAuthDialog.dismiss();
-			}
-			
 			mAuthDialog = new Dialog(this);
 			mAuthDialog.setContentView(R.layout.not_account_actions);
 			mAuthDialog.setTitle("Select option");
